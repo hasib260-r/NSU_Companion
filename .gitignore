@@ -1,0 +1,6 @@
+.env
+node_modules/
+dist/
+cafeteria.db
+*.db
+.vite/
