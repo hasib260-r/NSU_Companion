@@ -1,6 +1,34 @@
-.env
+# Dependencies
 node_modules/
+*/node_modules/
+
+# Build output
 dist/
-cafeteria.db
-*.db
+*/dist/
+build/
+
+# Vite / Vitest cache
 .vite/
+*/.vite/
+coverage/
+
+# Env files (never commit secrets)
+.env
+.env.local
+*/.env
+*/.env.local
+
+# Test artifacts
+TEST_RESULT.md
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

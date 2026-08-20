@@ -1,0 +1,16 @@
+{
+  "name": "nsu-companion-gateway",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reverse proxy that puts the backend and both frontends behind one URL for local development",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "http-proxy-middleware": "^2.0.7"
+  }
+}

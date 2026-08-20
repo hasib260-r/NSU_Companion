@@ -1,0 +1,21 @@
+{
+  "name": "nsu-companion",
+  "private": true,
+  "version": "1.0.0",
+  "description": "NSU Companion - merged workspace (Authentication, Admin Management, Backend)",
+  "scripts": {
+    "install:all": "npm install --prefix backend && npm install --prefix frontend-authentication && npm install --prefix frontend-admin && npm install --prefix gateway",
+    "dev": "concurrently -k -n BACKEND,AUTH,ADMIN,GATEWAY -c blue,green,magenta,yellow \"npm run dev --prefix backend\" \"npm run dev --prefix frontend-authentication\" \"npm run dev --prefix frontend-admin\" \"npm run dev --prefix gateway\"",
+    "dev:backend": "npm run dev --prefix backend",
+    "dev:auth": "npm run dev --prefix frontend-authentication",
+    "dev:admin": "npm run dev --prefix frontend-admin",
+    "dev:gateway": "npm run dev --prefix gateway",
+    "test": "py test.py || python3 test.py || python test.py",
+    "test:backend": "npm run test:run --prefix backend",
+    "test:admin": "npm run test:run --prefix frontend-admin",
+    "test:auth": "npm run test:run --prefix frontend-authentication"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
