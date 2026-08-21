@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Backs FR-5.1–FR-5.3 (Order Token Generation). Items are snapshotted
+// as their own rows (name/price at time of order) rather than a
+// foreign key into menu_items, since order history shouldn't change
+// if a vendor edits or removes a menu item later.
+model Order {
+  id           String      @id @default(cuid())
+  token        String      @unique
+  stall        String
+  studentName  String
+  status       OrderStatus @default(Received)
+  placedAt     DateTime    @default(now())
+  items        OrderItem[]
+
+  @@index([stall])
+  @@map("orders")
+}
+
+model OrderItem {
+  id       String @id @default(cuid())
+  name     String
+  qty      Int
+  price    Int
+  order    Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId  String
+
+  @@map("order_items")
+}
+
+enum OrderStatus {
+  Received
+  Preparing
+  Ready
+  Completed
+}

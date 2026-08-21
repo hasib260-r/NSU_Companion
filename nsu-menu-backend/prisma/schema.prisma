@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Backs FR-2.1–FR-2.4 (Digital Menu Management).
+model MenuItem {
+  id               String   @id @default(cuid())
+  name             String
+  stall            String
+  category         String
+  price            Int // stored in BDT, whole taka (no paisa in this MVP)
+  prepTimeMinutes  Int
+  available        Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([stall])
+  @@index([category])
+  @@map("menu_items")
+}

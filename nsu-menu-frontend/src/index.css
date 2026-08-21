@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background-color: #F5F4EF;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #20262A;
+}
+
+/* Signature element: menu items are styled as kitchen order tickets.
+   A dashed perforation separates the item identity from its
+   price / prep-time stub, echoing the token stubs students collect
+   at pickup. */
+.ticket-perforation {
+  position: relative;
+  border-top: 1.5px dashed #C9C4B6;
+}
+
+.ticket-perforation::before,
+.ticket-perforation::after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  width: 14px;
+  height: 14px;
+  background: #F5F4EF;
+  border-radius: 9999px;
+}
+
+.ticket-perforation::before {
+  left: -7px;
+}
+
+.ticket-perforation::after {
+  right: -7px;
+}
+
+.stamp {
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.06em;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid #DBD7CC;
+  background: #F5F4EF;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: #20262A;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #0F5257;
+}
+
+:focus-visible {
+  outline: 2px solid #0F5257;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
